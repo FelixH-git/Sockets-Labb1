@@ -25,7 +25,7 @@ def parse_and_execute(command):
         return "Try looking around, go east, west, or quit!"
     return "I don't understand your command!"
 
-host = "192.168.1.111"
+host = "IPADDR"
 port = 65432
 s = socket.socket()
 
