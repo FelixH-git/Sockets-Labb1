@@ -32,8 +32,6 @@ class RequestHandler(SimpleXMLRPCRequestHandler):
 # Create server
 with SimpleXMLRPCServer(('localhost', 8000),
                         requestHandler=RequestHandler) as server:
-    server.register_introspection_functions()
-
     server.register_function(parse_and_execute)
 
     # Run the server's main loop
