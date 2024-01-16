@@ -25,17 +25,20 @@ def parse_and_execute(command):
         return "Try looking around, go east, west, or quit!"
     return "I don't understand your command!"
 
-host = "127.0.0.1"
+host = "192.168.1.111"
 port = 65432
+s = socket.socket()
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.bind((host,port))
-    s.listen()
-    conn, addr = s.accept()
-    with conn:
-        print(f"connect by {addr}")
-        while True:
-            data = conn.recv(1024)
-            data = data.decode('utf-8')
-            print(data)
-            conn.sendall(bytes(parse_and_execute(data), 'utf-8'))
+s.bind((host,port))
+s.listen()
+conn, addr = s.accept()
+# with conn:
+#     print(f"connect by {addr}")
+while True:
+    data = conn.recv(1024)
+    if not data:
+        break
+    data = data.decode('utf-8')
+    print(data)
+    conn.send(bytes(parse_and_execute(data), 'utf-8'))
+conn.close()
