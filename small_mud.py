@@ -1,7 +1,7 @@
 
 import socket
 
-host = "192.168.1.111"
+host = "IP ADDR"
 port = 65432
 
 """
