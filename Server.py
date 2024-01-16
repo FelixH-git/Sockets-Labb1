@@ -31,6 +31,10 @@ s = socket.socket()
 
 s.bind((host,port))
 s.listen()
+
+#### FÖR FLERA CONNECTIONS #########
+#s.listen(2)
+############################
 conn, addr = s.accept()
 # with conn:
 #     print(f"connect by {addr}")
